@@ -27,6 +27,9 @@ export const onAuthenticatedUser = async () => {
         }
         return { status: 404, message: "user not found" }
     } catch (error) {
-        return {status: 400, message: "something went wrong aunthenticating user"}
+        return {
+            status: 400,
+            message: "something went wrong aunthenticating user",
+        }
     }
 }

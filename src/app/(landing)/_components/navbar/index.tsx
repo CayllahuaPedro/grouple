@@ -13,20 +13,26 @@ const LandingPageNavBar = (props: Props) => {
             <Menu orientation="desktop" />
             <div className="flex gap-1">
                 <Link href="/sign-in">
-                    <Button variant="outline"
-                    className="bg-themeBlack rounded-2xl flex gap-2 border-themeGray hover:bg-themeGray"
+                    <Button
+                        variant="outline"
+                        className="bg-themeBlack rounded-2xl flex gap-2 border-themeGray hover:bg-themeGray"
                     >
-                        <Logout/> 
+                        <Logout />
                         Login
                     </Button>
                 </Link>
-                <GlassSheet triggerClass="lg:hidden" trigger={
-                    <Button variant={"ghost"} className="hover:bg-transparent">
-                        <MenuIcon size={30}/>
-                         
-                    </Button>
-                }> 
-                <Menu orientation="mobile"/>
+                <GlassSheet
+                    triggerClass="lg:hidden"
+                    trigger={
+                        <Button
+                            variant={"ghost"}
+                            className="hover:bg-transparent"
+                        >
+                            <MenuIcon size={30} />
+                        </Button>
+                    }
+                >
+                    <Menu orientation="mobile" />
                 </GlassSheet>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import { useSignIn } from "@clerk/nextjs"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import {  z } from "zod"
+import { z } from "zod"
 import { SignInSchema } from "./schema"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
@@ -20,12 +20,12 @@ export const useAuthSignIn = () => {
     })
     const router = useRouter()
 
-    const onClerkAuth  = async (email: string, password: string) => {
+    const onClerkAuth = async (email: string, password: string) => {
         if (!isLoaded) {
             return toast.error("Oops! algo salió mal")
         }
         try {
-            // esto es lo importante 
+            // esto es lo importante
             const authenticated = await signIn.create({
                 identifier: email,
                 password: password,
@@ -42,16 +42,22 @@ export const useAuthSignIn = () => {
             }
         }
     }
-   const {mutate: InitiateLoginFlow, isPending} =useMutation({
-    mutationFn: ({email, password}:{email:string, password:string}) => onClerkAuth(email, password)
-   })
-   const onAuthenticatedUser= handleSubmit(async(values)=>{
-        InitiateLoginFlow({email:values.email, password:values.password});
-   })
-   return {
-    onAuthenticatedUser, 
-    isPending, 
-    register, 
-    errors,
-   }
+    const { mutate: InitiateLoginFlow, isPending } = useMutation({
+        mutationFn: ({
+            email,
+            password,
+        }: {
+            email: string
+            password: string
+        }) => onClerkAuth(email, password),
+    })
+    const onAuthenticatedUser = handleSubmit(async (values) => {
+        InitiateLoginFlow({ email: values.email, password: values.password })
+    })
+    return {
+        onAuthenticatedUser,
+        isPending,
+        register,
+        errors,
+    }
 }

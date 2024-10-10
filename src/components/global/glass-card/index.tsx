@@ -5,7 +5,7 @@ interface Props {
     children: React.ReactNode
     className?: string
 }
-export default function GlassCard({className, children}: Props) {
+export default function GlassCard({ className, children }: Props) {
     return (
         <Card
             className={cn(
